@@ -61,7 +61,7 @@
         return parseFloat(a.startTime) - parseFloat(b.startTime);
       });
       sortSessionData.reverse();
-      
+
 
       console.log(sortSessionData);
       
@@ -69,7 +69,7 @@
 
       for (var i = 0; i < sortSessionData.length; i ++){
         
-        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + i + "</td> <td>" + sortSessionData[i].startTime + "</td><td>" + sortSessionData[i].amount + "</td> <td>" + sortSessionData[i].deviceId + "</td></tr>" ).fadeIn(800);
+        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + i + "</td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + sortSessionData[i].amount + " mL </td> <td>" + sortSessionData[i].deviceId + "</td></tr>" ).fadeIn(800);
       
       }
 

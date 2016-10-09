@@ -104,6 +104,7 @@
         
         $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
       
+        console.log("hi");
       }
 
 

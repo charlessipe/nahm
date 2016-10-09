@@ -9,14 +9,15 @@
 
 .navbar-inverse {
   background-color: #00cfdc;
+  border: none;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
 }
 
 .main {
   margin-top: 160px;
-}
-
-h1 {
-  color: green;
 }
 
 th {
@@ -25,4 +26,9 @@ th {
 
 td {
   font-size: 30px;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #E0FFFF; 
+
 }

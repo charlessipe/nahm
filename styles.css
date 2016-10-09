@@ -18,3 +18,11 @@
 h1 {
   color: green;
 }
+
+th {
+  font-size: 20px;
+}
+
+td {
+  font-size: 30px;
+}

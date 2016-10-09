@@ -56,7 +56,7 @@
       };
 
       console.log(sortSessionData);
-
+      // sort array by descending date
       sortSessionData.sort(function(a, b) {
         return parseFloat(a.startTime) - parseFloat(b.startTime);
       });
@@ -69,7 +69,7 @@
 
       for (var i = 0; i < sortSessionData.length; i ++){
         
-        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + i + "</td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + sortSessionData[i].amount + " mL </td> <td>" + sortSessionData[i].deviceId + "</td></tr>" ).fadeIn(800);
+        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'></td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + sortSessionData[i].amount + " mL </td> <td>" + sortSessionData[i].deviceId + "</td></tr>" ).fadeIn(800);
       
       }
 

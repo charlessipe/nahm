@@ -18,6 +18,21 @@
   var database = firebase.database();
 
 
+  // display current amount
+  var currentFlow = firebase.database().ref('/rawdata/');
+    currentFlow.on('value', function(snapshot) {
+    var currentFlowData = snapshot.val();
+
+    for (var key in currentFlowData) {
+        if (currentFlowData.hasOwnProperty(key)) {
+
+          $(".current-flow").text(currentFlowData[key].amount + " mililiters");
+
+          //$( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + key + "</td> <td>" + currentRawData[key].time + "</td><td>" + currentRawData[key].amount + "</td> <td>" + currentRawData[key].deviceid + "</td></tr>" ).fadeIn(800);  
+        }
+    };
+
+  });
   
   
   var rawData = firebase.database().ref('/test/');
@@ -34,11 +49,9 @@
           reverseSessionData.push(currentRawData[key]);
           reverseSessionData.reverse();
 
-          $(".current-flow").text(currentRawData[key].amount + " liters/second");
+          //$(".current-flow").text(currentRawData[key].amount + " liters/second");
 
-          //$( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + key + "</td> <td>" + currentRawData[key].time + "</td><td>" + currentRawData[key].amount + "</td> <td>" + currentRawData[key].deviceid + "</td></tr>" ).fadeIn(800);
-
-          
+          //$( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + key + "</td> <td>" + currentRawData[key].time + "</td><td>" + currentRawData[key].amount + "</td> <td>" + currentRawData[key].deviceid + "</td></tr>" ).fadeIn(800);       
 
       };
 

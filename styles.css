@@ -7,6 +7,17 @@
   height: 150px;
 }
 
+@media (max-width: 767px) {
+  .logo {
+    height: 30px;
+  }
+
+  .navbar {
+    height: 63px;
+  }
+
+}
+
 .navbar-inverse {
   background-color: #00cfdc;
   border: none;

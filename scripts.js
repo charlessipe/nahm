@@ -20,7 +20,7 @@
 
   
   
-  var rawData = firebase.database().ref('/rawdata/');
+  var rawData = firebase.database().ref('/test/');
     rawData.on('value', function(snapshot) { 
     var currentRawData = snapshot.val();
     //console.log(currentRawData); 
@@ -30,10 +30,26 @@
     for (var key in currentRawData) {
         if (currentRawData.hasOwnProperty(key)) {
           rawDataArray.push( currentRawData[key].amount);
+          $(".current-flow").text(currentRawData[key].amount + " liters/second");
+
+          $( ".append-water-table" ).append( "<tr><td><img src='images/shower.png'>" + key + "</td> <td>" + currentRawData[key].time + "</td><td>" + currentRawData[key].amount + "</td> <td>" + currentRawData[key].deviceid + "</td></tr>" );
+
+          //$( "#1001-amount" ).append( "<td>" + currentRawData[key].amount + "</td>");
+          console.log(currentRawData[key].amount);
+          /*$( "#1001-device" ).text( deviceData[0]);
+          $( "#1001-time" ).text( timeData[0] );
+          $( "#1001-date" ).text( timeData[0] );
+
+          $( "#1002-amount" ).text( amountData[1] );
+          $( "#1002-device" ).text( deviceData[1]);
+          $( "#1002-time" ).text( timeData[1] );
+          $( "#1002-date" ).text( timeData[1] ); */
         };
       };
 
     console.log(rawDataArray);
+
+
   });
 
   

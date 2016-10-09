@@ -90,8 +90,19 @@
       $(".append-water-table").empty();
 
       for (var i = 0; i < sortSessionData.length; i ++){
+
         
-        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + sortSessionData[i].amount + " mL </td> </tr>" ).fadeIn(800);
+
+        function getAmountString(amount) {
+          var unit = "ML";
+          if (amount > 1000) {
+            amount = parseInt(amount / 1000);
+            unit = "L"
+          }
+          return amount + " " + unit;
+        }
+        
+        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
       
       }
 

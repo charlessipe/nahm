@@ -35,19 +35,19 @@
   });
   
   
-  var rawData = firebase.database().ref('/test/');
+  var rawData = firebase.database().ref('/sessions/');
     rawData.on('value', function(snapshot) { 
     var currentRawData = snapshot.val();
 
     //$(".append-water-table").empty();
 
-    var reverseSessionData = [];
+    var sortSessionData = [];
 
       for (var key in currentRawData) {
         if (currentRawData.hasOwnProperty(key)) {
           
-          reverseSessionData.push(currentRawData[key]);
-          reverseSessionData.reverse();
+          sortSessionData.push(currentRawData[key]);
+          //reverseSessionData.reverse();
 
           //$(".current-flow").text(currentRawData[key].amount + " liters/second");
 
@@ -55,13 +55,21 @@
 
       };
 
-      console.log(reverseSessionData);
+      console.log(sortSessionData);
+
+      sortSessionData.sort(function(a, b) {
+        return parseFloat(a.startTime) - parseFloat(b.startTime);
+      });
+      sortSessionData.reverse();
+      
+
+      console.log(sortSessionData);
       
       $(".append-water-table").empty();
 
-      for (var i = 0; i < reverseSessionData.length; i ++){
+      for (var i = 0; i < sortSessionData.length; i ++){
         
-        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + i + "</td> <td>" + reverseSessionData[i].time + "</td><td>" + reverseSessionData[i].amount + "</td> <td>" + reverseSessionData[i].deviceid + "</td></tr>" ).fadeIn(800);
+        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + i + "</td> <td>" + sortSessionData[i].startTime + "</td><td>" + sortSessionData[i].amount + "</td> <td>" + sortSessionData[i].deviceId + "</td></tr>" ).fadeIn(800);
       
       }
 

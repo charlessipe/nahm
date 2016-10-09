@@ -21,9 +21,19 @@
   
   
   var rawData = firebase.database().ref('/rawdata/');
-    rawData.on('value', function(snapshot) {
+    rawData.on('value', function(snapshot) { 
     var currentRawData = snapshot.val();
-    console.log(currentRawData);
+    //console.log(currentRawData); 
+
+    var rawDataArray = [];
+
+    for (var key in currentRawData) {
+        if (currentRawData.hasOwnProperty(key)) {
+          rawDataArray.push( currentRawData[key].amount);
+        };
+      };
+
+    console.log(rawDataArray);
   });
 
   

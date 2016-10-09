@@ -7,6 +7,10 @@
   height: 150px;
 }
 
+.navbar-inverse {
+  background-color: #00cfdc;
+}
+
 .main {
   margin-top: 160px;
 }

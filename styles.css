@@ -16,6 +16,18 @@
     height: 63px;
   }
 
+  .main {
+    margin-top: 80px;
+  }
+
+  th {
+    font-size: 10px;
+  }
+
+  td {
+    font-size: 20px;
+  }
+
 }
 
 .navbar-inverse {

@@ -62,6 +62,28 @@
       });
       sortSessionData.reverse();
 
+      var deviceImages = [
+       "images/shower.png",
+       "images/shower.png",
+       "images/kitchen-sink.png",
+       "images/washing-machine.png",
+       "images/bath.png",
+       "images/hose.png",
+       "images/beer.png",
+       "images/toilet.png"
+      ];
+
+    /*
+    var deviceMap = {
+       "shower": 1,
+       "sink": 2,
+       "washingmachine": 3,
+       "bath": 4,
+       "hose": 5,
+       "beer": 6,
+       "toilet": 7
+   };
+    */
 
       console.log(sortSessionData);
       
@@ -69,7 +91,7 @@
 
       for (var i = 0; i < sortSessionData.length; i ++){
         
-        $( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'></td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + sortSessionData[i].amount + " mL </td> <td>" + sortSessionData[i].deviceId + "</td></tr>" ).fadeIn(800);
+        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + sortSessionData[i].amount + " mL </td> </tr>" ).fadeIn(800);
       
       }
 
@@ -81,6 +103,7 @@
     var oldSessions = snapshot.val();
     // ...
     });*/
+
 
 
   });

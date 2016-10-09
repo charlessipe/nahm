@@ -1,4 +1,15 @@
 
+.logo {
+  height: 100px;
+}
+
+.navbar {
+  height: 150px;
+}
+
+.main {
+  margin-top: 160px;
+}
 
 h1 {
   color: green;

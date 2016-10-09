@@ -18,20 +18,64 @@
   var database = firebase.database();
 
 
-  /*
   
-  */
+  
+  var rawData = firebase.database().ref('/rawdata/');
+    rawData.on('value', function(snapshot) {
+    var currentRawData = snapshot.val();
+    console.log(currentRawData);
+  });
+
+  
 
   var waterFlowData0 = firebase.database().ref('/sessions/').once('value').then(function(snapshot) {
 
     var waterFlowDataValue0 = snapshot.val();
-    // ...
+ 
     console.log(waterFlowDataValue0);
+    
+    var amountData = [];
+    var timeData = [];
+    var deviceData = [];
 
+      for (var key in waterFlowDataValue0) {
+        if (waterFlowDataValue0.hasOwnProperty(key)) {
+          amountData.push( waterFlowDataValue0[key].amount );
+          timeData.push( waterFlowDataValue0[key].startTime );
+          deviceData.push( waterFlowDataValue0[key].deviceId );
+        };
+      };
+
+    console.log(amountData);
+    console.log(deviceData);
+    console.log(timeData);
+
+    /*
     var allWaterFlowData = waterFlowDataValue0[300].amount;
+    var allWaterFlowData2 = waterFlowDataValue0[300].deviceId;
+    var allWaterFlowData3 = waterFlowDataValue0[300].startTime;
 
-    $( "#1001-amount" ).text( allWaterFlowData + " liquid");
+    var allWaterFlowData4 = waterFlowDataValue0[301].amount;
+    var allWaterFlowData5 = waterFlowDataValue0[301].deviceId;
+    var allWaterFlowData6 = waterFlowDataValue0[301].startTime;
+    */
 
+    $( "#1001-amount" ).text( amountData[0]);
+    $( "#1001-device" ).text( deviceData[0]);
+    $( "#1001-time" ).text( timeData[0] );
+    $( "#1001-date" ).text( timeData[0] );
+
+    $( "#1002-amount" ).text( amountData[1] );
+    $( "#1002-device" ).text( deviceData[1]);
+    $( "#1002-time" ).text( timeData[1] );
+    $( "#1002-date" ).text( timeData[1] );   
+
+    /*$(".water-flow-table tr").each(function () {
+      $('td').each(function () {
+     })
+    })
+    */
+  
   });
 
 

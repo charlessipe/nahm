@@ -126,18 +126,17 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["Shower", "Sink", "Washing Machine", "Bath", "Hose", "Beer", "Toilet"],
+          labels: ["Shower", "Sink", "Washing", "Bath", "Hose", "Beer"],
                       datasets: [{
                           label: 'Liters',
-                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL , totalMonthToiletL],
+                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL],
                           backgroundColor: [
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
-                              'orange',
-                              '#00cfdc'
+                              'orange'
                           ],
                           borderColor: [
                               '#00cfdc',
@@ -145,8 +144,7 @@
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
-                              'orange',
-                              '#00cfdc'
+                              'orange'
                           ],
                           borderWidth: 1
                       }]

@@ -1,10 +1,10 @@
 
 .logo {
-  height: 100px;
+  height: 35px;
 }
 
 .navbar {
-  height: 150px;
+  height: 70px;
 }
 
 @media (max-width: 767px) {
@@ -30,6 +30,7 @@
 
 }
 
+
 .navbar-inverse {
   background-color: #00cfdc;
   border: none;
@@ -40,7 +41,7 @@
 }
 
 .main {
-  margin-top: 110px;
+  margin-top: 60px;
 }
 
 th {
@@ -54,4 +55,9 @@ td {
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #E0FFFF; 
 
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
 }

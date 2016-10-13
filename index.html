@@ -71,7 +71,7 @@
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <!--<h2 class="page-header">Dashboard</h1> -->
           <!--
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -99,13 +99,15 @@
           <div class="col-sm-6">
             <h2 class="sub-header">Current Flow</h2>
             <h3 class="current-flow" style="color:red; font-size: 60px;">0 mililiters</h3>
-          </div>
-          
-          <div class="col-sm-6">
             <h2>Water Usage This Month</h2>
-            <h3 class="total-month-liters" style="color:green; font-size: 60px;">0 Liters</h3>
+            <h3 class="total-month-liters" style="color:green; font-size: 60px; padding: 0;">0 Liters</h3>
           </div>
 
+          <div class="col-sm-6">
+            <canvas id="myChart" width="400" height="250"></canvas>
+          </div>
+
+          <div class="col-sm-12">
           <h2 class="sub-header">Sessions</h2>
 
           <div class="table-responsive">
@@ -121,10 +123,8 @@
               </tbody>
             </table>
           </div>
-
-          <div class="col-sm-8">
-            <canvas id="myChart" width="400" height="400"></canvas>
           </div>
+          
           
 
 

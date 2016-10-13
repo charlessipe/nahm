@@ -18,7 +18,7 @@
   var database = firebase.database();
 
 
-  // display current amount
+  // display current amount in view
   var currentFlow = firebase.database().ref('/rawdata/');
     currentFlow.on('value', function(snapshot) {
     var currentFlowData = snapshot.val();  
@@ -26,12 +26,9 @@
     for (var key in currentFlowData) {
         if (currentFlowData.hasOwnProperty(key)) {
 
-          //console.log(currentFlowData[key].amount); 
-
           // update "Current Flow"
           $(".current-flow").text(currentFlowData[key].amount + " mililiters");
-
-          //$( ".append-water-table" ).hide().append( "<tr><td><img src='images/shower.png'>" + key + "</td> <td>" + currentRawData[key].time + "</td><td>" + currentRawData[key].amount + "</td> <td>" + currentRawData[key].deviceid + "</td></tr>" ).fadeIn(800);  
+ 
         }
     };
 
@@ -44,7 +41,16 @@
 
     var totalMonthWater = 0;
 
+    var totalMonthShower = 0;
+    var totalMonthSink = 0;
+    var totalMonthWashingMachine = 0;
+    var totalMonthBath = 0;
+    var totalMonthHose = 0;
+    var totalMonthBeer = 0;
+    var totalMonthToilet = 0;
+
     var sortSessionData = [];
+
 
       for (var key in currentRawData) {
         if (currentRawData.hasOwnProperty(key)) {
@@ -52,10 +58,40 @@
           totalMonthWater =  totalMonthWater + currentRawData[key].amount; 
 
           sortSessionData.push(currentRawData[key]);
+
+          if (currentRawData[key].deviceId == 1){
+
+            totalMonthShower = totalMonthShower + currentRawData[key].amount;
+
+          } else if (currentRawData[key].deviceId == 2){
+
+            totalMonthSink = totalMonthSink + currentRawData[key].amount;
+
+          } else if (currentRawData[key].deviceId == 3){
+
+            totalMonthWashingMachine = totalMonthWashingMachine + currentRawData[key].amount;
+
+          } else if (currentRawData[key].deviceId == 4){
+
+            totalMonthBath = totalMonthBath + currentRawData[key].amount;
+
+          } else if (currentRawData[key].deviceId == 5){
+
+            totalMonthHose = totalMonthHose + currentRawData[key].amount;
+
+          } else if (currentRawData[key].deviceId == 6){
+
+            totalMonthBeer = totalMonthBeer + currentRawData[key].amount;
+
+          } else if (currentRawData[key].deviceId == 7){
+
+            totalMonthToilet = totalMonthToilet + currentRawData[key].amount;
+
+          }
+
        
       };
 
-      console.log(totalMonthWater);
 
       function getAmountString(amount) {
         var unit = "ML";
@@ -65,6 +101,68 @@
           }
         return amount + " " + unit;
       }
+
+
+      totalMonthShowerL = totalMonthShower/1000;
+      totalMonthSinkL = totalMonthSink/1000;
+      totalMonthWashingMachineL = totalMonthWashingMachine/1000;
+      totalMonthBathL = totalMonthBath/1000;
+      totalMonthHoseL = totalMonthHose/1000;
+      totalMonthBeerL = totalMonthBeer/1000;
+      totalMonthToiletL = totalMonthToilet/1000;
+
+      console.log(totalMonthWater);
+      console.log("Total month shower:" + totalMonthShowerL);
+      console.log("Total month sink:" + totalMonthSinkL);
+      console.log("Total month washing machine:" + totalMonthWashingMachineL);
+      console.log("Total month bath:" + totalMonthBathL);
+      console.log("Total month hose:" + totalMonthHoseL);
+      console.log("Total month beer:" + totalMonthBeerL);
+      console.log("Total month toilet:" + totalMonthToiletL);
+      
+      //render bar graph
+
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Shower", "Sink", "Washing Machine", "Bath", "Hose", "Beer", "Toilet"],
+                      datasets: [{
+                          label: 'Liters',
+                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL , totalMonthToiletL],
+                          backgroundColor: [
+                              '#00cfdc',
+                              '#00cfdc',
+                              '#00cfdc',
+                              '#00cfdc',
+                              '#00cfdc',
+                              'orange',
+                              '#00cfdc'
+                          ],
+                          borderColor: [
+                              '#00cfdc',
+                              '#00cfdc',
+                              '#00cfdc',
+                              '#00cfdc',
+                              '#00cfdc',
+                              'orange',
+                              '#00cfdc'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true
+                              }
+                          }]
+                      }
+                  }
+              });
+
+
 
       // update "Water Usage This Month"
       //totalMonthLiters = totalMonthWater/1000;
@@ -128,6 +226,18 @@
 
 
   });
+
+  /*
+      var deviceMap = {
+         "shower": 1,
+         "sink": 2,
+         "washingmachine": 3,
+         "bath": 4,
+         "hose": 5,
+         "beer": 6,
+         "toilet": 7
+      };
+      */
 
   
 

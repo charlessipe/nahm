@@ -26,8 +26,9 @@
     for (var key in currentFlowData) {
         if (currentFlowData.hasOwnProperty(key)) {
 
+          var currentFlowRate = (currentFlowData[key].amount / 5)
           // update "Current Flow"
-          $(".current-flow").text(currentFlowData[key].amount + " mililiters");
+          $(".current-flow").text(currentFlowRate + " mL/Second");
  
         }
     };

@@ -105,41 +105,32 @@
               <h2>Water Usage This Month</h2>
               <h3 class="total-month-liters" style="color:green; font-size: 55px; padding: 0;">0 Liters</h3>
             </div>
+
+            <div class="well well-sm">
+            <h2 class="sub-header">Sessions</h2>
+            <div class="table-responsive">
+              <table class="water-flow-table table table-striped">
+                <thead>
+                  <tr>
+                    <th>Device</th>
+                    <th>Time</th>
+                    <th>Amount </th>
+                  </tr>
+                </thead>
+                <tbody class="append-water-table"> 
+                </tbody>
+              </table>
+            </div>
+            </div>
           </div>
 
           <div class="col-sm-6">
             <div class="well well-sm">
               <h2>Water Use By Device</h2>
               <canvas id="myChart" width="400" height="250"></canvas>
-          </div>
-          </div>
-
-          <div class="col-sm-6">
-          <div class="well well-sm">
-          <h2 class="sub-header">Sessions</h2>
-          <div class="table-responsive">
-            <table class="water-flow-table table table-striped">
-              <thead>
-                <tr>
-                  <th>Device</th>
-                  <th>Time</th>
-                  <th>Amount </th>
-                </tr>
-              </thead>
-              <tbody class="append-water-table"> 
-              </tbody>
-            </table>
-          </div>
-          </div>
-          </div>
-          
-          <div class="col-sm-6">
-            <div class="well well-sm">
               <canvas id="myChartDonut" width="400" height="250"></canvas>
             </div>
           </div>
-          
-
 
         </div>
       </div>

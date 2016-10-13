@@ -28,7 +28,7 @@
 
           var currentFlowRate = (currentFlowData[key].amount / 5)
           // update "Current Flow"
-          $(".current-flow").text(currentFlowRate + " mL/Second");
+          $(".current-flow").text(currentFlowRate + " mL/sec");
  
         }
     };
@@ -121,6 +121,44 @@
       console.log("Total month beer:" + totalMonthBeerL);
       console.log("Total month toilet:" + totalMonthToiletL);
       
+      //render donut graph
+
+      var cty = document.getElementById("myChartDonut");
+      var myDoughnutChart = new Chart(cty, {
+        type: 'doughnut',
+        data: {
+          labels: [
+              "Shower",
+              "Sink",
+              "WMachine",
+              "Bath",
+              "Hose",
+              "Beer"
+          ],
+          datasets: [
+              {
+                  data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL],
+                  backgroundColor: [
+                      "#00cfdc",
+                      "#36A2EB",
+                      "#FFCE56",
+                      "#2FACB2",
+                      "#cc65fe",
+                      "orange"
+                  ],
+                  hoverBackgroundColor: [
+                      "#00cfdc",
+                      "#36A2EB",
+                      "#FFCE56",
+                      "#2FACB2",
+                      "#cc65fe",
+                      "orange"
+                  ]
+              }]
+        },
+        options: {}
+      });
+
       //render bar graph
 
       var ctx = document.getElementById("myChart");
@@ -215,7 +253,7 @@
           return amount + " " + unit;
         }
         
-        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD, YYYY HH:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
+        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD h:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
       
         
       }

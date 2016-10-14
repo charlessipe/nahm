@@ -60,31 +60,31 @@
 
           sortSessionData.push(currentRawData[key]);
 
-          if (currentRawData[key].deviceId == 1){
+          if ((currentRawData[key].deviceId == 1 || (currentRawData[key].deviceId >=10 && currentRawData[key].deviceId <= 19))){
 
             totalMonthShower = totalMonthShower + currentRawData[key].amount;
 
-          } else if (currentRawData[key].deviceId == 2){
+          } else if ((currentRawData[key].deviceId == 2 || (currentRawData[key].deviceId >=20 && currentRawData[key].deviceId <= 29))){
 
             totalMonthSink = totalMonthSink + currentRawData[key].amount;
 
-          } else if (currentRawData[key].deviceId == 3){
+          } else if ((currentRawData[key].deviceId == 3 || (currentRawData[key].deviceId >=30 && currentRawData[key].deviceId <= 39))){
 
             totalMonthWashingMachine = totalMonthWashingMachine + currentRawData[key].amount;
 
-          } else if (currentRawData[key].deviceId == 4){
+          } else if ((currentRawData[key].deviceId == 4 || (currentRawData[key].deviceId >=40 && currentRawData[key].deviceId <= 49))){
 
             totalMonthBath = totalMonthBath + currentRawData[key].amount;
 
-          } else if (currentRawData[key].deviceId == 5){
+          } else if ((currentRawData[key].deviceId == 5 || (currentRawData[key].deviceId >=50 && currentRawData[key].deviceId <= 59))){
 
             totalMonthHose = totalMonthHose + currentRawData[key].amount;
 
-          } else if (currentRawData[key].deviceId == 6){
+          } else if ((currentRawData[key].deviceId == 6 || (currentRawData[key].deviceId >=60 && currentRawData[key].deviceId <= 69))){
 
             totalMonthBeer = totalMonthBeer + currentRawData[key].amount;
 
-          } else if (currentRawData[key].deviceId == 7){
+          } else if ((currentRawData[key].deviceId == 7 || (currentRawData[key].deviceId >=70 && currentRawData[key].deviceId <= 79))){
 
             totalMonthToilet = totalMonthToilet + currentRawData[key].amount;
 
@@ -156,7 +156,9 @@
                   ]
               }]
         },
-        options: {}
+        options: {
+          events: ["click"]
+        }
       });
 
       //render bar graph
@@ -192,6 +194,7 @@
                       }]
                   },
                   options: {
+                      events: ["click"],
                       scales: {
                           yAxes: [{
                               ticks: {
@@ -224,7 +227,7 @@
        "images/hose.png",
        "images/beer.png",
        "images/toilet.png"
-      ];
+      ];   
 
       /*
       var deviceMap = {
@@ -244,6 +247,24 @@
 
       for (var i = 0; i < sortSessionData.length; i ++){
 
+
+      var deviceImageNumber;
+
+      if (sortSessionData[i].deviceId == 1 || (sortSessionData[i].deviceId >=10 && sortSessionData[i].deviceId <= 19)){
+        deviceImageNumber = 1
+      } else if ((sortSessionData[i].deviceId == 2 || (sortSessionData[i].deviceId >=20 && sortSessionData[i].deviceId <= 29))){
+        deviceImageNumber = 2
+      } else if ((sortSessionData[i].deviceId == 3 || (sortSessionData[i].deviceId >=30 && sortSessionData[i].deviceId <= 39))){
+        deviceImageNumber = 3
+      } else if ((sortSessionData[i].deviceId == 4 || (sortSessionData[i].deviceId >=40 && sortSessionData[i].deviceId <= 49))){
+        deviceImageNumber = 4
+      } else if ((sortSessionData[i].deviceId == 5 || (sortSessionData[i].deviceId >=50 && sortSessionData[i].deviceId <= 59))){
+        deviceImageNumber = 5
+      } else if ((sortSessionData[i].deviceId == 6 || (sortSessionData[i].deviceId >=60 && sortSessionData[i].deviceId <= 69))){
+        deviceImageNumber = 6
+      } else if ((sortSessionData[i].deviceId == 7 || (sortSessionData[i].deviceId >=70 && sortSessionData[i].deviceId <= 79))){
+        deviceImageNumber = 7
+      }
         
 
         function getAmountString(amount) {
@@ -255,7 +276,7 @@
           return amount + " " + unit;
         }
         
-        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[sortSessionData[i].deviceId]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD h:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
+        $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[deviceImageNumber]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD h:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
       
         
       }

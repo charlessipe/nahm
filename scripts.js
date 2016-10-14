@@ -95,7 +95,7 @@
 
 
       function getAmountString(amount) {
-        var unit = "ML";
+        var unit = "mL";
           if (amount > 1000) {
             amount = parseInt(amount / 1000);
             unit = "L"
@@ -162,6 +162,9 @@
       //render bar graph
 
       var ctx = document.getElementById("myChart");
+      //$('#myChart').remove(); // this is my <canvas> element
+      //$('.water-use-device').append('<canvas id="myChart" width="400" height="250"></canvas>'); 
+
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -197,9 +200,8 @@
                           }]
                       }
                   }
-              });
-
-
+              });       
+         
 
       // update "Water Usage This Month"
       //totalMonthLiters = totalMonthWater/1000;
@@ -245,7 +247,7 @@
         
 
         function getAmountString(amount) {
-          var unit = "ML";
+          var unit = "mL";
           if (amount > 1000) {
             amount = parseInt(amount / 1000);
             unit = "L"

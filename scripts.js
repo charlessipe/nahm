@@ -49,6 +49,8 @@
     var totalMonthHose = 0;
     var totalMonthBeer = 0;
     var totalMonthToilet = 0;
+    var totalMonthKitchenSink = 0;
+    var totalMonthBathSink = 0;
 
     var sortSessionData = [];
 
@@ -88,7 +90,15 @@
 
             totalMonthToilet = totalMonthToilet + currentRawData[key].amount;
 
-          }
+          } else if ((currentRawData[key].deviceId == 8 || (currentRawData[key].deviceId >=80 && currentRawData[key].deviceId <= 89))){
+
+            totalMonthKitchenSink = totalMonthKitchenSink + currentRawData[key].amount;
+
+          } else if ((currentRawData[key].deviceId == 9 || (currentRawData[key].deviceId >=90 && currentRawData[key].deviceId <= 99))){
+
+            totalMonthBathSink = totalMonthBathSink + currentRawData[key].amount;
+
+          } 
 
        
       };
@@ -111,6 +121,9 @@
       totalMonthHoseL = totalMonthHose/1000;
       totalMonthBeerL = totalMonthBeer/1000;
       totalMonthToiletL = totalMonthToilet/1000;
+      totalMonthKitchenSinkL = totalMonthKitchenSink/1000;
+      totalMonthBathSinkL = totalMonthBathSink/1000;
+
 
       console.log(totalMonthWater);
       console.log("Total month shower:" + totalMonthShowerL);
@@ -120,6 +133,8 @@
       console.log("Total month hose:" + totalMonthHoseL);
       console.log("Total month beer:" + totalMonthBeerL);
       console.log("Total month toilet:" + totalMonthToiletL);
+      console.log("Total month kitchen sink:" + totalMonthKitchenSinkL);
+      console.log("Total month bath sink:" + totalMonthBathSinkL);
       
       //render donut graph
 
@@ -221,12 +236,14 @@
       var deviceImages = [
        "images/shower.png",
        "images/shower.png",
-       "images/kitchen-sink.png",
+       "images/kitchen-sink.png", // washroom sink
        "images/washing-machine.png",
        "images/bath.png",
        "images/hose.png",
        "images/beer.png",
-       "images/toilet.png"
+       "images/toilet.png",
+       "images/table-sink.png", // kitchen sink
+       "images/bath-sink.png"
       ];   
 
       /*
@@ -264,6 +281,10 @@
         deviceImageNumber = 6
       } else if ((sortSessionData[i].deviceId == 7 || (sortSessionData[i].deviceId >=70 && sortSessionData[i].deviceId <= 79))){
         deviceImageNumber = 7
+      } else if ((sortSessionData[i].deviceId == 8 || (sortSessionData[i].deviceId >=80 && sortSessionData[i].deviceId <= 89))){
+        deviceImageNumber = 8
+      } else if ((sortSessionData[i].deviceId == 9 || (sortSessionData[i].deviceId >=90 && sortSessionData[i].deviceId <= 99))){
+        deviceImageNumber = 9
       }
         
 

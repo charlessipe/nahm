@@ -144,22 +144,26 @@
         data: {
           labels: [
               "Shower",
-              "Sink",
+              "WSink",
               "WMachine",
               "Bath",
               "Hose",
-              "Beer"
+              "Beer",
+              "KSink",
+              "BSink"
           ],
           datasets: [
               {
-                  data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL],
+                  data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL, totalMonthKitchenSinkL, totalMonthBathSinkL],
                   backgroundColor: [
                       "#00cfdc",
                       "#36A2EB",
                       "#FFCE56",
                       "#2FACB2",
                       "#cc65fe",
-                      "orange"
+                      "orange",
+                      "green",
+                      "pink"
                   ],
                   hoverBackgroundColor: [
                       "#00cfdc",
@@ -167,7 +171,9 @@
                       "#FFCE56",
                       "#2FACB2",
                       "#cc65fe",
-                      "orange"
+                      "orange",
+                      "green",
+                      "pink"
                   ]
               }]
         },
@@ -185,17 +191,19 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["Shower", "Sink", "Washing", "Bath", "Hose", "Beer"],
+          labels: ["Shower", "Washroom Sink", "Washing Machine", "Bath", "Hose", "Beer", "Kitchen Sink", "Bath Sink"],
                       datasets: [{
                           label: 'Liters',
-                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL],
+                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL, totalMonthKitchenSinkL, totalMonthBathSinkL],
                           backgroundColor: [
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
-                              'orange'
+                              'orange',
+                              '#00cfdc',
+                              '#00cfdc'
                           ],
                           borderColor: [
                               '#00cfdc',
@@ -203,7 +211,9 @@
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
-                              'orange'
+                              'orange',
+                              '#00cfdc',
+                              '#00cfdc'
                           ],
                           borderWidth: 1
                       }]

@@ -160,20 +160,20 @@
                       "#36A2EB",
                       "#FFCE56",
                       "#2FACB2",
-                      "#cc65fe",
+                      "#bf7fbf",
                       "orange",
-                      "green",
-                      "pink"
+                      "#9eca83",
+                      "#ff9999"
                   ],
                   hoverBackgroundColor: [
                       "#00cfdc",
                       "#36A2EB",
                       "#FFCE56",
                       "#2FACB2",
-                      "#cc65fe",
+                      "#bf7fbf",
                       "orange",
-                      "green",
-                      "pink"
+                      "#9eca83",
+                      "#ff9999"
                   ]
               }]
         },

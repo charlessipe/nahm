@@ -107,16 +107,6 @@
     }
 
 
-      function getAmountString(amount) {
-        var unit = "mL";
-          if (amount > 1000) {
-            amount = parseInt(amount / 1000);
-            unit = "L"
-          }
-        return amount.toFixed(1) + " " + unit;
-      }
-
-
       totalMonthShowerL = totalMonthShower/1000;
       totalMonthSinkL = totalMonthSink/1000;
       totalMonthWashingMachineL = totalMonthWashingMachine/1000;
@@ -298,17 +288,7 @@
         deviceImageNumber = 8
       } else if ((sortSessionData[i].deviceId == 9 || (sortSessionData[i].deviceId >=90 && sortSessionData[i].deviceId <= 99))){
         deviceImageNumber = 9
-      }
-        
-
-        function getAmountString(amount) {
-          var unit = "mL";
-          if (amount > 1000) {
-            amount = parseInt(amount / 1000);
-            unit = "L"
-          }
-          return amount.toFixed(1) + " " + unit;
-        }
+      }   
         
         $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[deviceImageNumber]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD h:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
       
@@ -330,6 +310,12 @@
       };
       */
 
-  
-
- 
+function getAmountString(amount) {
+  var unit = "mL";
+  if (amount > 1000) {
+    amount = amount / 1000;
+    amount = amount.toFixed(1);
+    unit = "L"
+  }
+  return amount + " " + unit;
+} 

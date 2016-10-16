@@ -11,7 +11,10 @@
     storageBucket: "shower-water-flow-381ec.appspot.com",
     messagingSenderId: "748413230083"
   };
-  firebase.initializeApp(config);
+
+  if (firebase.apps.length === 0) {  
+    firebase.initializeApp(config);
+  }
 
 
   // Get a reference to the database service
@@ -102,6 +105,7 @@
 
        
       };
+    }
 
 
       function getAmountString(amount) {
@@ -311,9 +315,6 @@
       
         
       }
-
-
-    };
 
 
   });

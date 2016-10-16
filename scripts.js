@@ -32,7 +32,6 @@
           var currentFlowRate = (currentFlowData[key].amount / 5)
           // update "Current Flow"
           $(".current-flow").text(currentFlowRate + " mL/sec");
- 
         }
     };
 
@@ -114,7 +113,7 @@
             amount = parseInt(amount / 1000);
             unit = "L"
           }
-        return amount + " " + unit;
+        return amount.toFixed(1) + " " + unit;
       }
 
 

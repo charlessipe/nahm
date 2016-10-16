@@ -49,6 +49,8 @@
     var totalMonthHose = 0;
     var totalMonthBeer = 0;
     var totalMonthToilet = 0;
+    var totalMonthKitchenSink = 0;
+    var totalMonthBathSink = 0;
 
     var sortSessionData = [];
 
@@ -88,7 +90,15 @@
 
             totalMonthToilet = totalMonthToilet + currentRawData[key].amount;
 
-          }
+          } else if ((currentRawData[key].deviceId == 8 || (currentRawData[key].deviceId >=80 && currentRawData[key].deviceId <= 89))){
+
+            totalMonthKitchenSink = totalMonthKitchenSink + currentRawData[key].amount;
+
+          } else if ((currentRawData[key].deviceId == 9 || (currentRawData[key].deviceId >=90 && currentRawData[key].deviceId <= 99))){
+
+            totalMonthBathSink = totalMonthBathSink + currentRawData[key].amount;
+
+          } 
 
        
       };
@@ -111,6 +121,9 @@
       totalMonthHoseL = totalMonthHose/1000;
       totalMonthBeerL = totalMonthBeer/1000;
       totalMonthToiletL = totalMonthToilet/1000;
+      totalMonthKitchenSinkL = totalMonthKitchenSink/1000;
+      totalMonthBathSinkL = totalMonthBathSink/1000;
+
 
       console.log(totalMonthWater);
       console.log("Total month shower:" + totalMonthShowerL);
@@ -120,6 +133,8 @@
       console.log("Total month hose:" + totalMonthHoseL);
       console.log("Total month beer:" + totalMonthBeerL);
       console.log("Total month toilet:" + totalMonthToiletL);
+      console.log("Total month kitchen sink:" + totalMonthKitchenSinkL);
+      console.log("Total month bath sink:" + totalMonthBathSinkL);
       
       //render donut graph
 
@@ -129,30 +144,36 @@
         data: {
           labels: [
               "Shower",
-              "Sink",
+              "WSink",
               "WMachine",
               "Bath",
               "Hose",
-              "Beer"
+              "Beer",
+              "KSink",
+              "BSink"
           ],
           datasets: [
               {
-                  data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL],
+                  data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL, totalMonthKitchenSinkL, totalMonthBathSinkL],
                   backgroundColor: [
                       "#00cfdc",
                       "#36A2EB",
                       "#FFCE56",
                       "#2FACB2",
-                      "#cc65fe",
-                      "orange"
+                      "#bf7fbf",
+                      "orange",
+                      "#9eca83",
+                      "#ff9999"
                   ],
                   hoverBackgroundColor: [
                       "#00cfdc",
                       "#36A2EB",
                       "#FFCE56",
                       "#2FACB2",
-                      "#cc65fe",
-                      "orange"
+                      "#bf7fbf",
+                      "orange",
+                      "#9eca83",
+                      "#ff9999"
                   ]
               }]
         },
@@ -170,17 +191,19 @@
       var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["Shower", "Sink", "Washing", "Bath", "Hose", "Beer"],
+          labels: ["Shower", "Washroom Sink", "Washing Machine", "Bath", "Hose", "Beer", "Kitchen Sink", "Bath Sink"],
                       datasets: [{
                           label: 'Liters',
-                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL],
+                          data: [totalMonthShowerL, totalMonthSinkL, totalMonthWashingMachineL, totalMonthBathL, totalMonthHoseL, totalMonthBeerL, totalMonthKitchenSinkL, totalMonthBathSinkL],
                           backgroundColor: [
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
-                              'orange'
+                              'orange',
+                              '#00cfdc',
+                              '#00cfdc'
                           ],
                           borderColor: [
                               '#00cfdc',
@@ -188,7 +211,9 @@
                               '#00cfdc',
                               '#00cfdc',
                               '#00cfdc',
-                              'orange'
+                              'orange',
+                              '#00cfdc',
+                              '#00cfdc'
                           ],
                           borderWidth: 1
                       }]
@@ -221,12 +246,14 @@
       var deviceImages = [
        "images/shower.png",
        "images/shower.png",
-       "images/kitchen-sink.png",
+       "images/kitchen-sink.png", // washroom sink
        "images/washing-machine.png",
        "images/bath.png",
        "images/hose.png",
        "images/beer.png",
-       "images/toilet.png"
+       "images/toilet.png",
+       "images/table-sink.png", // kitchen sink
+       "images/bath-sink.png"
       ];   
 
       /*
@@ -264,6 +291,10 @@
         deviceImageNumber = 6
       } else if ((sortSessionData[i].deviceId == 7 || (sortSessionData[i].deviceId >=70 && sortSessionData[i].deviceId <= 79))){
         deviceImageNumber = 7
+      } else if ((sortSessionData[i].deviceId == 8 || (sortSessionData[i].deviceId >=80 && sortSessionData[i].deviceId <= 89))){
+        deviceImageNumber = 8
+      } else if ((sortSessionData[i].deviceId == 9 || (sortSessionData[i].deviceId >=90 && sortSessionData[i].deviceId <= 99))){
+        deviceImageNumber = 9
       }
         
 

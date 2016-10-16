@@ -1,4 +1,5 @@
 var firebase = require("firebase@3.0.4");
+var moment = require('moment@2.11.2');
 
 var config = {
     apiKey: "AIzaSyCbqUgLObGp-B-Aubjw--OSsRrpgdXGR0U",
@@ -27,7 +28,7 @@ function sendAmount(database, device, callback) {
 
         var deviceId = getDeviceId(device);
         var startTime;
-        var today = getToday();
+        var today = getStartOfDay();
         var amount = 0;
         
         for (startTime in data) {
@@ -37,6 +38,8 @@ function sendAmount(database, device, callback) {
         }
 
         var response = "You used about " + getAmountString(amount) + " in the " + device + " today";
+		
+		// Not You've used 700L this month in the toiler. Do you need to see the doctor?
 
         callback(null, response);
     });
@@ -58,10 +61,9 @@ function convertToNumber(obj) {
     }
 }
 
-function getToday() {
-    var now = new Date();
-    var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    return startOfDay / 1000;
+function getStartOfDay() {	
+    var startOfDay = moment().utcOffset('-0700').startOf('day').unix();
+    return startOfDay;
 }
 
 function getDeviceId(device) {

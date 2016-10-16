@@ -307,7 +307,7 @@
             amount = parseInt(amount / 1000);
             unit = "L"
           }
-          return amount + " " + unit;
+          return amount.toFixed(1) + " " + unit;
         }
         
         $( ".append-water-table" ).hide().append( "<tr> <td> <img src='" +deviceImages[deviceImageNumber]+ "'> </td> <td>" + moment.unix(sortSessionData[i].startTime).format("MMM DD h:mm A") + "</td><td>" + getAmountString(sortSessionData[i].amount) + " </td> </tr>" ).fadeIn(800);
